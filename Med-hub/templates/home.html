@@ -1,0 +1,340 @@
+{% extends 'main.html' %}
+{% block content %}
+{% if message %}
+    <div class="alert alert-danger">{{ message }}</div>
+{% endif %}
+<style>
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    height: 100%;
+    
+    margin: 0;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+h1 {
+  text-align: center;
+    margin-top: 10%;
+    font-size: 60px;
+  
+}
+.h2{
+    text-align:center;
+}
+.box {
+    margin: 50px auto;
+    width: 100%;
+    background-color: #f8f3f3;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(0,0,0,0.2);
+    padding: 20px;
+    text-align: justify;
+    line-height: 1.5;
+    position: relative;
+    animation: riseUp 1s forwards;
+  }
+  
+  .box::before {
+    content: "";
+    position: absolute;
+    top: 10px;
+    left: -10px;
+    right: -10px;
+    bottom: 10px;
+    background-color: rgba(255, 255, 255, 0.7);
+    box-shadow: 0px 5px 15px rgba(0,0,0,0.3);
+    transform: rotateY(-5deg);
+    z-index: -1;
+  }
+  
+  @keyframes riseUp {
+    from {
+      transform: translateY(50px);
+      opacity: 0;
+    }
+    to {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+
+  .card-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    margin: 50px auto;
+    width: 70%;
+  }
+  
+  .card {
+    width: calc(33.33% - 20px);
+    margin: 10px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(0,0,0,0.2);
+    text-align: center;
+    opacity: 0;
+    transform: translateY(50px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+  }
+  
+  .card.animated {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  
+  .card img {
+    width: 70%;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+  }
+  
+  .card h2 {
+    font-size: 24px;
+    font-weight: bold;
+    margin-top: 10px;
+  }
+  
+  .card p {
+    font-size: 16px;
+    margin: 10px;
+  }
+  
+    
+  
+  @media (max-width: 767px) {
+    .card {
+      width: 100%;
+    }
+  }
+  
+  .predict-container {
+    text-align: center;
+    margin-top: 50px;
+  }
+  
+  .predict-container h2 {
+    font-size: 36px;
+    font-weight: bold;
+    margin-bottom: 20px;
+  }
+  
+  .underline {
+    width: 800px;
+    height: 5px;
+    background-color: #333;
+    margin: 0 auto;
+  }
+  .content {
+    background-color: #fff;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    max-width: 1200px;
+    padding:20px;
+    margin-bottom: 20px;
+    
+    border-radius: 8px;
+    font-size: 16px;
+    line-height: 1.6;
+    color: #333;
+    transition: box-shadow 0.3s ease-in-out;
+  }
+
+  .content:hover {
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+  }
+
+  #cancer-dropdown {
+    font-size: 16px;
+    padding: 10px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    width: 200px;
+    
+  }
+
+  .Information{
+    padding-top:50px;
+  }
+  .cd{
+    padding:20px;
+  }
+</style>
+<div class="container">
+    <div class="context " style=" background-color: #ffffff">
+        <h1>MED-HUB</h1>
+        <h2 class='h2'> Multiple Disease Predictor</h1>
+        <br>
+       
+       
+        <div class="box">
+            <h2>Introduction</h2>
+            <p>Our Multiple Disease Detector is a Machine Learning based tool that analyzes medical data and provides a diagnosis for multiple diseases with high accuracy. By using machine learning algorithms, we can quickly analyze large amounts of data and provide a fast and reliable diagnosis for a variety of diseases.
+                We have trained our Data Model using Support Vector Machine algorithm. Support Vector Machine (SVM) algorithm is one of the supervised algorithm in Machine Learning, using that we can predict the values or 
+                the diseases in an easier way.It will be an effective way use this data model to predict diseases.
+            </p>
+    </div>
+
+    <div class="predict-container">
+        <h2>We Predict</h2>
+        <div class="underline"></div>
+      </div>
+  
+      <div class="card-container">
+        <div class="card">
+          <i class="bi bi-0-circle-fill"></i>
+          <h2>Kidney Disease</h2>
+          <h4>Accuracy of 99.16%</h4>
+          
+        </div>
+        <div class="card">
+          
+          <h2>Diabetes</h2>
+          <h4>Accuracy of 92.54%</h4>
+          
+        </div>
+        <div class="card">
+          
+          <h2>Heart Disease</h2>
+          <h4>Accuracy of 98.70%</h4>
+        </div>
+        <div class="card">
+          
+          <h2>Liver Cancer</h2>
+          <h4>Accuracy of 71.83%</h4>
+          
+        </div>
+        <div class="card">
+          
+          <h2>Breast Cancer</h2>
+          <h4>Accuracy of 97.66%</h4>
+          
+        </div>
+      </div>
+      <div class="predict-container">
+        <h2>For General Information</h2>
+        <div class="underline"></div>
+      </div>
+
+<div class='Information'>
+      <div class="content">
+        <h2>Select a type of disease:</h2>
+        <select id="cancer-dropdown" onchange="displayInfo()">
+          <option value="diabetes">Diabetes</option>
+          <option value="liver">Liver Cancer</option>
+          <option value="kidney">Kidney Cancer</option>
+          <option value="heart">Heart Cancer</option>
+          <option value="breast">Breast Cancer</option>
+        </select>
+      
+      <div id="info-card"></div>
+        </div></div>
+      <script>
+        function isScrolledIntoView(el) {
+            var rect = el.getBoundingClientRect();
+            var elemTop = rect.top;
+            var elemBottom = rect.bottom;
+
+            // Only completely visible elements return true:
+            var isVisible = (elemTop >= 0) && (elemBottom <= window.innerHeight);
+            // Partially visible elements return true:
+            //isVisible = elemTop < window.innerHeight && elemBottom >= 0;
+            return isVisible;
+        }
+
+        function animateCardsOnScroll() {
+            var cards = document.querySelectorAll(".card");
+            cards.forEach(function(card, index) {
+                if (isScrolledIntoView(card)) {
+                setTimeout(function() {
+                    card.classList.add("animated");
+                }, index * 200); // Delay animation by 200ms for each card
+            }
+        });
+        }
+
+        document.addEventListener("scroll", animateCardsOnScroll);
+
+        function displayInfo() {
+          const dropdown = document.getElementById("cancer-dropdown");
+          const selectedValue = dropdown.value;
+          const infoCard = document.getElementById("info-card");
+          if (selectedValue === "diabetes") {
+            infoCard.innerHTML =  `
+            <div class='cd'>
+                <h2>Diabetes Information</h2>
+                <p>Diabetes mellitus refers to a group of diseases that affect how your body uses blood sugar (glucose). Glucose is vital to your health because it's an important source of energy for the cells that make up your muscles and tissues. It's also your brain's main source of fuel. The underlying cause of diabetes varies by type. But, no matter what type of diabetes you have, it can lead to excess sugar in your blood. Too much sugar in your blood can lead to serious health problems.</p>
+                <h5>Symptoms</h5>
+                <ul>
+                    <li>Increased thirst</li>
+                    <li>Frequent urination</li>
+                    <li>Extreme hunger</li>
+                    <li>Unexplained weight loss</li>
+                    <li>Blurred vision</li>
+                </ul>
+            </div>
+        `;
+          } else if (selectedValue === "kidney") {
+            infoCard.innerHTML = `
+            <div class='cd'>
+              <h4>Chronic Kidney Disease</h4>
+              <p>Chronic kidney disease (CKD) means your kidneys are damaged and can’t filter blood the way they should. The disease is called “chronic” because the damage to your kidneys happens slowly over a long period of time. This damage can cause wastes to build up in your body. CKD can also cause other health problems.</p>
+              <h5>Symptoms</h5>
+              <ul>
+                  <li>Nausea</li>
+                  <li>Vomiting</li>
+                  <li>Fatigue and weakness</li>
+                  <li>Muscle twitches and cramps</li>
+                  <li>Loss of appetite</li>
+              </ul>
+            </div>`;
+          } else if (selectedValue === "liver") {
+            infoCard.innerHTML = `
+            <div class='cd'>
+              <h4>Liver Disease</h4>
+                <p>The term “liver disease” refers to any of several conditions that can affect and damage your liver. Over time, liver disease can cause cirrhosis (scarring). As more scar tissue replaces healthy liver tissue, the liver can no longer function properly. Left untreated, liver disease can lead to liver failure and liver cancer.</p>
+                <h5>Symptoms</h5>
+                <ul>
+                    <li>Abdominal (belly) pain (especially on the right side)</li>
+                    <li>Bruising easily</li>
+                    <li>Changes in the color of your urine or stool</li>
+                    <li>Fatigue</li>
+                    <li>Nausea or vomiting</li>
+                </ul>
+              </div>`;
+          } else if (selectedValue === "heart") {
+            infoCard.innerHTML = `
+            <div class='cd'>
+              <h2>Heart Disease information</h2>
+              <p>Cardiovascular disease (heart disease) refers to a group of diseases that affect the heart and blood vessels of your body. These diseases can affect one or many parts of your heart and /or blood vessels. A person may be symptomatic (physically experience the disease) or be asymptomatic (not feel anything at all).</p>
+              <h5>Symptoms</h5>
+              <ul>
+                  <li>Pounding or racing heart (palpitations)</li>
+                  <li>Chest pain</li>
+                  <li>Sweating</li>
+                <li>Lightheadedness</li>
+                <li>Shortness of breath</li>
+            </ul></div>`;
+          } else if (selectedValue === "breast") {
+            infoCard.innerHTML =`
+            <div class='cd'>
+              <h2>Breast Cancer Information</h2>
+                <p>Breast cancer is a type of cancer that starts in the breast. It can start in one or both breasts. After skin cancer, breast cancer is the most common cancer diagnosed in women in the United States. Breast cancer can occur in both men and women, but it's far more common in women.</p>
+                <h5>Symptoms</h5>
+                <ul>
+                    <li>New lump in the breast or underarm (armpit)</li>
+                    <li>Thickening or swelling of part of the breast.</li>
+                    <li>Irritation or dimpling of breast skin</li>
+                    <li>Redness or flaky skin in the nipple area or the breast</li>
+                    <li>Pulling in of the nipple or pain in the nipple area</li>
+                </ul>
+            </div>  '
+            `;
+          }
+        }
+    
+    </script>
+
+    </div>
+</div>
+{% endblock %}
